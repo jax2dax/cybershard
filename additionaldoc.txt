@@ -1,0 +1,179 @@
+You're already doing the "scroll scrubbing" technique:
+
+action.play();
+action.paused = true;
+
+useFrame(() => {
+  action.time =
+    action.getClip().duration * scroll.offset;
+});
+
+This means:
+
+play() initializes the animation
+paused = true stops Three.js from advancing time automatically
+YOU manually control the frame by setting action.time
+Mental Model
+
+Think of it like a video:
+
+Animation clip
+0s ---------------------- 10s
+
+Normally:
+
+action.play();
+
+Three.js moves:
+
+0 -> 1 -> 2 -> 3 -> 4 ...
+
+automatically.
+
+But with:
+
+action.play();
+action.paused = true;
+
+you take control.
+
+Now you decide:
+
+action.time = 5;
+
+Go to second 5.
+
+action.time = 8;
+
+Go to second 8.
+
+action.time = 1;
+
+Go back to second 1.
+
+Pause Scroll Animation
+
+Create a flag:
+
+const canScrollAnimate = useRef(false);
+
+Then:
+
+useFrame(() => {
+  const action = actions?.Experiment;
+
+  if (!action) return;
+  if (!canScrollAnimate.current) return;
+
+  action.time =
+    action.getClip().duration * scroll.offset;
+});
+
+Now nothing happens until:
+
+canScrollAnimate.current = true;
+Resume When A Button Is Clicked
+<button
+  onClick={() => {
+    canScrollAnimate.current = true;
+  }}
+>
+  Start
+</button>
+Resume When State Changes
+const [started, setStarted] = useState(false);
+
+useFrame(() => {
+  if (!started) return;
+
+  action.time =
+    action.getClip().duration * scroll.offset;
+});
+<button onClick={() => setStarted(true)}>
+  Start
+</button>
+Resume When GSAP Section Is Reached
+
+This is probably what you want.
+
+ScrollTrigger.create({
+  trigger: "#about",
+  start: "top center",
+
+  onEnter: () => {
+    canScrollAnimate.current = true;
+  },
+
+  onLeaveBack: () => {
+    canScrollAnimate.current = false;
+  }
+});
+
+Now:
+
+Hero section
+↓
+About section  <-- animation starts here
+↓
+More sections
+Freeze On Current Frame
+
+Suppose scroll reaches frame 40.
+
+Just stop updating:
+
+canScrollAnimate.current = false;
+
+The model stays exactly where it is.
+
+Play Automatically Instead Of Scroll
+
+You can temporarily stop scroll control:
+
+action.paused = false;
+
+Now Three.js plays it normally.
+
+Stop Completely
+action.stop();
+
+Returns to beginning.
+
+Reset To Beginning
+action.reset();
+Jump To Exact Frame
+action.time = 2.5;
+
+Show animation at 2.5 seconds.
+
+Useful for:
+
+if (section === "hero") {
+  action.time = 0;
+}
+
+if (section === "about") {
+  action.time = 3;
+}
+
+if (section === "contact") {
+  action.time = 7;
+}
+
+For your current project, I'd keep it simple:
+
+const canScrollAnimate = useRef(false);
+
+useFrame(() => {
+  const action = actions?.Experiment;
+
+  if (!action) return;
+  if (!canScrollAnimate.current) return;
+
+  action.time =
+    action.getClip().duration * scroll.offset;
+});
+
+Then let GSAP, a button click, or a React state flip canScrollAnimate.current between true and false.
+
+That's the core concept: when you manually set action.time, scroll is no longer in control — your code is. Scroll is just one possible source of that time value.
