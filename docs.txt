@@ -1,0 +1,12 @@
+//loader for the models (pre render)
+import { useProgress,Html } from "@react-three/drei"
+
+const loader = ()=>{
+    const { progress, active } = useProgress();
+    return <Html center>{progress.toFixed(2)} %</Html>
+}
+
+<Loader />  //insert component in
+ <Suspense fallback={<Loader />}>
+        <Robot />
+      </Suspense>
