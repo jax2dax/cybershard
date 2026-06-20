@@ -32,7 +32,7 @@ const Robot = ({canAnimate, progress, loopwave}) => {
 
                 actions["Experiment"].time =
                 center +
-                amplitude * Math.sin(t*0.5);  //0.3 flag makes the wave slower
+                amplitude * Math.sin(t*0.2);  //0.3 flag makes the wave slower
                 return;
   }
         return (
@@ -43,7 +43,7 @@ const Robot = ({canAnimate, progress, loopwave}) => {
     )})
     
   return (
-    <group ref={group} className="border-2  overflow-x-hidden  border-blue-700">
+    <group ref={group} className="border-2   border-blue-700">
         <primitive  object={scene} 
         position={[isMobile ? -1.59 : -1.59, 0, isMobile ? 0.7 : 1.5]} 
         scale={isMobile ? 0.6 : 1} 

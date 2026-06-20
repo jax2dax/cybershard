@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import {
   Manrope,
   Covered_By_Your_Grace,
-  Rock_Salt
+  Rock_Salt,
+  Audiowide
 } from "next/font/google";import "./globals.css";
 
+// const audiowide = Audiowide({ subsets: ["latin"], weight: "400" });
 const manrope = Manrope({
   variable: "--font-manrope",
   subsets: ["latin"],
