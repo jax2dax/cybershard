@@ -13,20 +13,60 @@ const Loader = ()=>{
     return <Html center>{progress.toFixed(2)} %</Html>
 }
 
+import { useThree } from "@react-three/fiber";
+import { useEffect } from "react";
+import gsap from "gsap";
 
 
-const Scene = ({canAnimate, progress, loopwave}) => {
+const  ptn = {  x: -3, y: 2, z: 1 }
+const  rtn = {_x : 0, _y: 0, _z: 0}
+
+function CameraController({ moveRobot }) {
+  const camera = useThree((state) => state.camera);
+//Move the Camera witht he passed prop
+  useEffect(() => { 
+    if (moveRobot === "down") {
+      gsap.to(camera.position, {
+        x: ptn.x + 0,
+        y: ptn.y + 0,
+        z: ptn.z + 2,
+        duration: 2,
+      });
+    }
+    else if (moveRobot === "down2") {
+      gsap.to(camera.position, {
+        x: ptn.x + 0,
+        y: ptn.y + 0,
+        z: ptn.z + 2,
+        duration: 2,
+      });
+    }
+    else {
+      gsap.to(camera.position, {
+        x: ptn.x + 0,
+        y: ptn.y + 0,
+        z: ptn.z ,
+        duration: 0.4,
+      });
+    }
+  }, [moveRobot, camera]);
+
+  return null;
+}
+
+
+const Scene = ({canAnimate, progress, loopwave , moveRobot}) => {
     const isMobile = useMediaQuery({query: '(max-width:768px)'}) ;
 
 // const  ptn = {  x: -0.8060782616407615, y: -7.694908748305981, z: 6.029279228547276 }
 // const  rtn = {_x : -0.44253979478456734, _y: -0.9610511898258951, _z: -0.3705444712580497}
 
-const  ptn = {  x: -3, y: 2, z: 1 }
-const  rtn = {_x : 0, _y: 0, _z: 0}
+
+
   return (
-    <Canvas camera={{ position: [ptn.x, ptn.y, ptn.z] , rotation: [rtn._x, rtn._y, rtn._z] }} gl={{ antialias: true }} dpr={2} style={{ width: '100vw', height: '100vh' }} className="border-2  overflow-x-hidden scroll-hidden border-blue-700">
+    <Canvas camera={{ position: [ptn.x, ptn.y, ptn.z] , rotation: [rtn._x, rtn._y, rtn._z] }} gl={{ antialias: true }} dpr={2} style={{ width: '100vw', height: '100vh' }} className="  overflow-x-hidden scroll-hidden z-15 border-blue-700">{/**z-15 */}
       <ambientLight  />
-      
+      <CameraController moveRobot={moveRobot} />
 
       <OrbitControls enablePan={false} enableDamping={true} enableZoom={false} onChange={(e) => {
         console.log(e.target.object.position); //position 
@@ -37,7 +77,7 @@ const  rtn = {_x : 0, _y: 0, _z: 0}
       
       <Suspense fallback={<Loader />}>
       {/* <ScrollControls damping={0.34} pages={3} > */}  {/**adding scroll functionality || gsap-controls scroll(progress) removed due to double scrolll bar bug caused by window */}
-        <Robot progress={progress} loopwave={loopwave} canAnimate={canAnimate} position={[0, -5, 0]} />
+        <Robot moveRobot={moveRobot} progress={progress} loopwave={loopwave} canAnimate={canAnimate} position={[0, -5, 0]} />
       {/* </ScrollControls> */}
       </Suspense>
 

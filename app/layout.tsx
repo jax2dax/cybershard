@@ -6,7 +6,7 @@ import {
   Audiowide
 } from "next/font/google";import "./globals.css";
 
-// const audiowide = Audiowide({ subsets: ["latin"], weight: "400" });
+const audiowide = Audiowide({ subsets: ["latin"], weight: "400" });
 const manrope = Manrope({
   variable: "--font-manrope",
   subsets: ["latin"],
@@ -34,7 +34,7 @@ export default function RootLayout({
       lang="en"
       className={`${manrope.variable} h-full antialiased`}
     >
-      <body className={` ${covered.className} min-h-full flex flex-col`}>{children}</body>
+      <body className={` ${audiowide.className} min-h-full flex flex-col bg-black`}>{children}</body>
     </html>
   );
 }

@@ -1,8 +1,8 @@
 import { forwardRef} from 'react'
-
-const Button = forwardRef(({ content, variant }, ref) => {
+import {redirect} from "next/navigation"
+const Button = forwardRef(({ content, variant, className }, ref) => {
   return (
-    <button  className={`px-8 py-3 z-2 group relative rounded-xl text-2xl 
+    <button onClick={() => {redirect("/get-started")}} className={`px-8 py-3 z-2 group relative rounded-xl text-2xl 
   bg-white
     `}>
         <div ref={ref}
@@ -18,6 +18,7 @@ const Button = forwardRef(({ content, variant }, ref) => {
     rounded-xl
     -z-10
      ${variant === 'primary' ? `bg-[#fd4af1]   text-[#000000]` : 'bg-[#39e5ff] text-[#ffffff]'} 
+     ${className}
 `}
   
 />

@@ -35,10 +35,11 @@ const Robot = ({canAnimate, progress, loopwave}) => {
                 amplitude * Math.sin(t*0.2);  //0.3 flag makes the wave slower
                 return;
   }
+       
         return (
            
        // (actions["Experiment"].time =  3+(actions["Experiment"]?.getClip().duration * scroll.offset)/3)
-    actions["Experiment"].time =   (actions["Experiment"].getClip().duration * progress.current)
+    actions["Experiment"].time =   (actions["Experiment"].getClip().duration * progress.current - 0.8)
         
     )})
     

@@ -136,3 +136,88 @@
     @apply font-sans;
   }
 }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+/* animation*/
+.blue-diagonal-slashes {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.blue-diagonal-slashes::before {
+  content: "";
+  position: absolute;
+  inset: -50%;
+
+  background:
+    repeating-linear-gradient(
+      -45deg,
+      transparent 0px,
+      transparent 18px,
+      rgba(0, 170, 255, 0.12) 18px,
+      rgba(0, 170, 255, 0.12) 34px,
+      transparent 34px,
+      transparent 52px,
+      rgba(0, 255, 255, 0.18) 52px,
+      rgba(0, 255, 255, 0.18) 70px
+    );
+
+  background-size: 300px 300px;
+
+  animation: slash-rain 8s linear infinite;
+
+  transform: skewY(-8deg);
+
+  z-index: -1;
+  pointer-events: none;
+}
+.ztopper {
+  z-index: 350;
+}
+.blue-diagonal-slashes::after {
+  content: "";
+  position: absolute;
+  inset: -50%;
+
+  background:
+    repeating-linear-gradient(
+      -45deg,
+      transparent 0px,
+      transparent 40px,
+      rgba(0, 140, 255, 0.25) 40px,
+      rgba(0, 140, 255, 0.25) 55px
+    );
+
+  background-size: 220px 220px;
+
+  animation: slash-rain-fast 3s linear infinite;
+
+  mix-blend-mode: screen;
+
+  z-index: -1;
+  pointer-events: none;
+}
+
+@keyframes slash-rain {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 250px 600px;
+  }
+}
+
+@keyframes slash-rain-fast {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 400px 900px;
+  }
+}
