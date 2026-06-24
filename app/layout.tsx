@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import SmoothScrollProvider from "@/components/SmoothScrollProvider"
 import {
   Manrope,
   Covered_By_Your_Grace,
@@ -34,7 +35,10 @@ export default function RootLayout({
       lang="en"
       className={`${manrope.variable} h-full antialiased`}
     >
-      <body className={` ${audiowide.className} min-h-full flex flex-col bg-black`}>{children}</body>
+     
+      <body className={` ${audiowide.className} min-h-full flex flex-col bg-black`}>
+         <SmoothScrollProvider>{children}</SmoothScrollProvider>
+      </body>
     </html>
   );
 }

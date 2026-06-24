@@ -121,7 +121,7 @@ useGSAP(()=>{
     scrub: true,
      snap: {
       snapTo: 1,      // snap to the end of this trigger
-      duration: 2.3,
+      duration: 1.3,
       delay: 0,
       ease: "power2.out"
     }
