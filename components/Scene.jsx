@@ -68,7 +68,7 @@ const Scene = ({canAnimate, progress, loopwave , moveRobot}) => {
       <ambientLight  />
       <CameraController moveRobot={moveRobot} />
 
-      <OrbitControls enablePan={false} enableDamping={true} enableZoom={false} onChange={(e) => {
+      <OrbitControls enablePan={false} enableRotate={false} enableDamping={true} enableZoom={false} onChange={(e) => {
         console.log(e.target.object.position); //position 
         console.log(e.target.object.rotation); //rotation
         

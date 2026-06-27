@@ -364,11 +364,11 @@ text-white   font-extrabold scale-170 max-sm:scale-100 ml-4 absolute z-5 top-0 `
   />
        </div>
        
-           <p className="flex-nowrap flex mt-4"> Search Faster  
+           <p className="flex-nowrap flex mt-4"> Powered Purely by SQL 
                     
             </p> {/**with our advanced algorithms and intuitive interface. */} 
-           <p>Blazing-fast full-text search</p>
-           <p>Explore Better</p>
+           <p>Engineered for speed</p>
+           <p>Tuned for Precision</p>
 
  
         </div>

@@ -22,7 +22,7 @@ const Button = forwardRef(({ content, variant, className }, ref) => {
 `}
   
 />
-     <div className="relative text-4xl font-extrabold z-3">{content}</div>
+     <div className="relative text-3xl font-extrabold z-3">{content}</div>
     </button>
   )
 })
