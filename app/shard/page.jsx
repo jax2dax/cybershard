@@ -309,8 +309,8 @@ useGSAP(() => {
       <div className="w-full flex-1 h-full flex flex-col items-center  z-50 justify-center ">
         <header ref={headerRef} className={`w-full flex-no-wrap content-stretch h-20 relative bottom-5 left-16 max-sm:bottom-0 max-sm:left-2 my-4 mx-2 flex items-center justify-center p-4 `}>
         <h1 className={`${audiowide.className} text-5xl max-sm:text-3xl  
-text-white   font-extrabold scale-170 max-sm:scale-100 ml-4 absolute z-5 top-0 `}>
-            CYBER <span className="text-[#fefefe]">ShaRD</span>  {/**text-[#ea00ff] pink */}
+text-[#3499f8]   font-extrabold scale-170 max-sm:scale-100 ml-4 absolute z-5 top-0 `}>
+            CYBER <span className="text-[#e634ce]">ShaRD</span>  {/**text-[#ea00ff] pink */}
            
         </h1>
         <h1 ref={blueRef} className={`${audiowide.className} text-[#2f01ff] text-5xl max-sm:text-3xl  
@@ -375,8 +375,8 @@ text-white   font-extrabold scale-170 max-sm:scale-100 ml-4 absolute z-5 top-0 `
       </div>
     
       <div id="CTA" ref={ctaRef} className="flex gap-4 z-100 align-bottom translate-y-[14vh] max-sm:translate-y-[4vh] justify-evenly  w-full CTA">
-         <Button ref={btn1Ref} glitching={glitching} content="Free Sample" variant="primary" />
-        <Button ref={btn2Ref} glitching={glitching} content="View Github Repo" variant="secondary" />
+         <Button ref={btn1Ref} glitching={glitching} content="Try the Demo" variant="primary" />
+        <Button ref={btn2Ref} glitching={glitching} content="View on GitHub" variant="secondary" />
       </div>
       
  {/* <MarqueeGlider className="

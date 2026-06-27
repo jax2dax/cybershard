@@ -9,7 +9,7 @@ import Shard from "./shard/page"
 import { Audiowide } from "next/font/google";
 import MarqueeGlider from '@/components/Marquee';
 import{ Speed1, Speed2 } from "@/components/Speed"
-import { Button } from '@/components/ui/button';
+import Button from '@/components/Button.jsx';
 const audiowide = Audiowide({ subsets: ["latin"], weight: "400" });
 gsap.registerPlugin(ScrollTrigger);
 const page = () => {
@@ -170,17 +170,20 @@ useGSAP(()=>{
       y: "50vh",
       ease: "sin.inOut",   //pull it down to the blue area
      // duration: 2,
-    }).to([duoHeaderLeftRef.current, duoHeaderRightRef.current],{
+    }).to([duoHeaderLeftRef.current],{
         color:"#ea00ff",
-        //textContent: "hello",
+        textContent: "No overpricing",
        duration:0.5,    //change texts to pink
        scrub: false
     },"<50%")
-    .to([duoHeaderLeftRef.current, duoHeaderRightRef.current],{
-      
-    })
+    .to(duoHeaderRightRef.current,{
+       color:"#ea00ff",
+        textContent: "No cluster Headache",
+       duration:0.5,    //change texts to pink
+       scrub: false
+    },"<") 
     
-  })
+  }) 
   //duo headers//
   ////disappear the original blue box///
 useGSAP(()=>{
@@ -362,8 +365,8 @@ ScrollTrigger.create({
               <div className="bg-blue-600 w-[10%] rounded-full h-full absolute  left-[60%] a top-0 -translate-y-[16%]  " />
               <div className="bg-blue-600 w-[10%] rounded-full h-full left-[80%] absolute top-0 -translate-y-[6%]  " /> */}
           </div>
-          <h1 id="duo-header-left" ref={duoHeaderLeftRef} className="text-white z-2 text-4xl font-bold absolute bottom-[30vh] left-10">Instant Glasses <span className="text-[#ea00ff] sm:hidden">Quality Search</span></h1>
-          <h1 id="duo-header-right" ref={duoHeaderRightRef} className="text-white z-2 text-4xl font-bold absolute bottom-[30vh] right-10 max-sm:hidden"> Quality Search</h1>
+          <h1 id="duo-header-left" ref={duoHeaderLeftRef} className="text-white z-2 text-4xl font-bold absolute bottom-[30vh] left-10 max-sm:text-sm">No Elastic Search<span className="text-[#ea00ff] sm:hidden max-lg:hidden max-md:hidden "></span></h1>
+          <h1 id="duo-header-right" ref={duoHeaderRightRef} className="text-white z-2 text-4xl font-bold absolute bottom-[30vh] right-10 max-sm:hidden">No Algolia cluster</h1>
       </div>
       <div id="bluebox" className="fixed  top-0 w-[5%] rounded-full left-1/2 transform -translate-x-1/2 h-15 z-10 text-black bg-[#0acaff]">
                  
@@ -372,29 +375,31 @@ ScrollTrigger.create({
       <div id="robot-cover" className="  relative w-full h-[100vh]  bg-[#0acaff] ">
               <div id="left-panel" className="w-1/3 max-sm:w-[45%] h-2/3 rounded-r-xl   bg-pink-500 absolute bottom-[10%] z-1  flex items-center  flex-col justify-evenly">
                 <div id="static-pink-box"  className=" h-full bg-pink-500 w-2 h-2 z-10 absolute top-0 left-0 flex items-center justify-center" />
-                <h2 className="text-white text-2xl max-sm:text-lg">Robot Cover Content</h2>
-                <h2 className="text-white text-2xl max-sm:text-lg">Robot Cover Content</h2>
-                <h2 className="text-white text-2xl max-sm:text-lg">best in the market</h2>
-                <h2 className="text-white text-2xl  max-sm:text-lg">trusted by millions</h2>
+                <h2 className="text-white text-2xl max-sm:text-lg">Zero Infra Bloat</h2>
+                <h2 className="text-white text-2xl max-sm:text-lg">Sub millisecond response times</h2>
+                <h2 className="text-white text-2xl max-sm:text-lg">Typo Tolerance </h2>
+                <h2 className="text-white text-2xl  max-sm:text-lg">Full text search power-house</h2>
               </div>
               <div id="right-panel" className="w-1/3 max-sm:w-[45%] h-2/3 rounded-l-xl  bg-pink-500 absolute right-0 bottom-[10%] z-1 flex items-center  flex-col justify-evenly">
                 <div id="static-pink-box2"  className=" h-full bg-pink-500 z-10 w-2 h-2   absolute top-0 right-0 left-right flex items-center justify-center" />
-                <h2 className="text-white text-2xl max-sm:text-lg">Robot Cover Content</h2>
-                <h2 className="text-white text-2xl max-sm:text-lg">Robot Cover Content</h2>
-                <h2 className="text-white text-2xl max-sm:text-lg ">best in the market</h2>
-                <h2 className="text-white text-2xl max-sm:text-lg ">trusted by millions</h2>
+                <h2 className="text-white text-2xl max-sm:text-lg">Smart Ranking & Relevancy</h2>
+                <h2 className="text-white text-2xl max-sm:text-lg">Light weight  </h2>
+                <h2 className="text-white text-2xl max-sm:text-lg ">Fuzzy Matching</h2>
+                <h2 className="text-white text-2xl max-sm:text-lg ">Developer first</h2>
               </div>
 
       </div> 
         <div className=" h-[100vh] w-full z-100 flex  bg-black relative items-center justify-center">
+          <div className="absolute top-15  text-sm text-zinc-500 "><h2>The only Search Engine you'll ever need</h2></div>
               <div id="pink-bg"  className="z-100 bg-pink-500 h-full w-full top-0 "></div>
               {/**constent box */}
               
-          <div className="w-full h-full flex  flex-col items-center absolute gap-10 justify-center">
+          <div className="w-full  h-full flex  flex-col items-center absolute gap-10 justify-center">
                 <h1 className="text-white text-5xl sm:scale-120 ">Explore the unknown</h1>
                 <h1 className="text-white text-4xl sm:scale-120"><span className="text-pink-500 text-lg">with</span> CyberShard</h1>
-                <Button className="bg-pink-500 text-white py-8 px-10 mt-10 rounded-md">Get Started</Button>
-                <div className="absolute top-0 z-19 w-full h-full"><Speed2  /></div>
+               {/**@ts-ignore */}
+                <Button variant="primary" content="Get Started" className="bg-pink-500 text-white py-8 px-10 mt-10 rounded-md">Get Started</Button>
+                <div className="absolute top-0 z-10 w-full h-full"><Speed2  /></div>
           </div>
            </div>  {/**z-100 ztopper a simple div to cover the robot(absolute) */}
           
