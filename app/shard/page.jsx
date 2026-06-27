@@ -405,7 +405,7 @@ text-[#3499f8]   font-extrabold scale-170 max-sm:scale-100 ml-4 absolute z-5 top
     
     
 {/* <Speed1 /> */}
-    <section id="marquee-section" className="w-full flex h-full bg-black relative   border-red-600 items-center justify-center p-4">
+    <section id="marquee-section" className="w-full flex h-full relative bg-black    border-red-600 items-center justify-center p-4">
        
           
           
