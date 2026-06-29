@@ -6,7 +6,7 @@ import { useMediaQuery } from 'react-responsive'
 useGLTF.preload("/robot.glb");
 
 
-const Robot = ({canAnimate, progress, loopwave}) => {
+const Robot = ({canAnimate, progress, loopwave, moveRobot}) => {
     const isMobile = useMediaQuery({query: '(max-width:768px)'}) ;
     const group = useRef(null);
     const { scene, nodes, materials , animations } = useGLTF("/robot.glb");
@@ -19,6 +19,7 @@ const Robot = ({canAnimate, progress, loopwave}) => {
             
         }
     },[]);
+    
     //const scroll = useScroll();
     useFrame(()=>{ //console.log(scroll.offset); 
         if (!canAnimate || !actions["Experiment"]) return;
