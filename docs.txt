@@ -30,5 +30,19 @@ const loader = ()=>{
         /////////////
         <button onClick={() => {canScrollAnimate.current = TRUE; }}  Start </button>  // example~with button
         //////////////
+-------
+------- 
+useFrame(() => {
+        const action = actions?.Experiment;    
 
+        if (!action) return;
+        if (!canScrollAnimate.current) return;   //pause until canScrollAnimate.current = true;
+
+        action.time =
+            action.getClip().duration * scroll.offset;   //settime ~
+        });
+
+        /////////////
+        <button onClick={() => {canScrollAnimate.current = TRUE; }}  Start </button>  // example~with button
+        //////////////
 
