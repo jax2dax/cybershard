@@ -160,6 +160,8 @@ if (section === "contact") {
   action.time = 7;
 }
 
+----------------------------------
+
 For your current project, I'd keep it simple:
 
 const canScrollAnimate = useRef(false);
