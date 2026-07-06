@@ -3,6 +3,11 @@ import {redirect} from "next/navigation"
 const Button = forwardRef(({ content, variant, className }, ref) => {
   /*button  */
   /**button added  */
+  /*button  */
+  /**button added  */
+  /*button  */
+  /**button added  */
+
   return (
     <button onClick={() => {redirect("/get-started")}} className={`px-8 py-3 z-20 group relative rounded-xl text-2xl 
   bg-white
